@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from gestion_nube import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('admin/', admin.site.urls),
+    path('', views.menu, name='menu'),
+    path('config/', views.enviar_config, name='enviar_config'),
+    path('consumo/', views.enviar_consumo, name='enviar_consumo'),
+    path('operaciones/', views.operaciones, name='operaciones'),
+    path('facturar/', views.facturar, name='facturar'),
+    path('reportes/', views.reportes, name='reportes'),
+    path('ayuda/', views.ayuda, name='ayuda'),
 ]
+

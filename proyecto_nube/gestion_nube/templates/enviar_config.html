@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Enviar XML Configuración</title>
+</head>
+<body>
+    <h1>Enviar archivo XML de configuración</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="archivo" accept=".xml" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <hr>
+    {% if msg %}
+        <p>{{ msg }}</p>
+    {% endif %}
+
+    <a href="/">Volver al menú</a>
+</body>
+</html>

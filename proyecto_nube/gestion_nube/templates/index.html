@@ -5,7 +5,29 @@
   <h1>Proyecto Nube</h1>
   <nav>
     <a href="/">Menu</a> |
-    <a href="/config/">Enviar configuracion</a> |
+    <<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Proyecto Nube</title>
+</head>
+<body>
+    <h1>Proyecto Nube</h1>
+    <nav>
+        <a href="/">Menu</a> |
+        <a href="/config/">Enviar configuracion</a> |
+        <a href="/consumo/">Enviar consumo</a> |
+        <a href="/operaciones/">Operaciones</a> |
+        <a href="/facturar/">Facturar</a> |
+        <a href="/reportes/">Reportes</a> |
+        <a href="/ayuda/">Ayuda</a>
+    </nav>
+    <hr>
+    {% if msg %}<p>{{ msg }}</p>{% endif %}
+    {% if data %}<pre>{{ data|safe }}</pre>{% endif %}
+</body>
+</html>
+a href="/config/">Enviar configuracion</a> |
     <a href="/consumo/">Enviar consumo</a> |
     <a href="/operaciones/">Operaciones</a> |
     <a href="/facturar/">Facturar</a> |

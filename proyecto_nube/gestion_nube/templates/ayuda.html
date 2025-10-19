@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ayuda - Proyecto Nube</title>
+</head>
+<body>
+  <h1>Sección de Ayuda</h1>
+  <a href="/">Regresar al menú principal</a>
+  <hr>
+
+  <h2>Información del Proyecto</h2>
+  <ul>
+    <li><strong>Autor:</strong> {{ info.autor }}</li>
+    <li><strong>Carnet:</strong> {{ info.carnet }}</li>
+    <li><strong>Curso:</strong> {{ info.curso }}</li>
+    <li><strong>Proyecto:</strong> {{ info.proyecto }}</li>
+  </ul>
+
+  <h3>Descripción</h3>
+  <p>{{ info.descripcion }}</p>
+
+  <h3>Guía rápida</h3>
+  <ol>
+    <li>Usa “Enviar configuración” para cargar el archivo <code>config.xml</code>.</li>
+    <li>Usa “Enviar consumo” para cargar <code>consumo.xml</code>.</li>
+    <li>Presiona “Facturar” para generar <code>facturas.xml</code> y su PDF.</li>
+    <li>Consulta reportes por categorías, configuraciones o recursos.</li>
+  </ol>
+</body>
+</html>

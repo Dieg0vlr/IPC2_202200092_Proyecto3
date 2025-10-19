@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Reportes — Proyecto Nube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #fafafa;
+            color: #222;
+        }
+        h1 {
+            text-align: center;
+            color: #1a237e;
+        }
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 8px;
+            text-decoration: none;
+            color: #1565c0;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #0d47a1;
+        }
+        hr { margin: 20px 0; }
+        section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        input, button {
+            padding: 6px 10px;
+            font-size: 14px;
+            margin: 5px;
+        }
+        button {
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0d47a1;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 13px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Proyecto Nube</h1>
+
+    <nav>
+        <a href="/">Menu</a> |
+        <a href="/config/">Enviar configuracion</a> |
+        <a href="/consumo/">Enviar consumo</a> |
+        <a href="/operaciones/">Operaciones</a> |
+        <a href="/facturar/">Facturar</a> |
+        <a href="/reportes/">Reportes</a> |
+        <a href="/ayuda/">Ayuda</a>
+    </nav>
+    <hr>
+
+    <section>
+        <h3>Ver factura</h3>
+        <input id="factId" type="number" min="1" placeholder="ID de factura" style="width: 140px;">
+        <button onclick="verFactura()">Ver PDF</button>
+    </section>
+
+    <script>
+        function verFactura() {
+            const id = document.getElementById("factId").value.trim();
+            if (!id) {
+                alert("Ingresa un ID de factura");
+                return;
+            }
+            window.open(`http://127.0.0.1:5000/api/reporte/factura/${id}/ver`, "_blank");
+        }
+    </script>
+
+    {% if msg %}
+    <p style="text-align:center; color:green;">{{ msg }}</p>
+    {% endif %}
+    {% if data %}
+    <pre style="background:#fff; border:1px solid #ddd; padding:10px; text-align:left;">{{ data|safe }}</pre>
+    {% endif %}
+
+    <footer>
+        © 2025 — Proyecto 3 IPC2 — Universidad de San Carlos de Guatemala
+    </footer>
+</body>
+</html>

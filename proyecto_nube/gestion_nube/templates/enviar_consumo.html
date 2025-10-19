@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Enviar consumo</title>
+</head>
+<body>
+  <h1>Enviar archivo de consumo</h1>
+  <a href="/">Regresar al menú</a>
+  <hr>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Selecciona el archivo XML:</label>
+    <input type="file" name="archivo" required>
+    <button type="submit">Enviar consumo</button>
+  </form>
+
+  {% if msg %}
+  <p><strong>{{ msg }}</strong></p>
+  {% endif %}
+</body>
+</html>

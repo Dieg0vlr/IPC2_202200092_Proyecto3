@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Operaciones</title></head>
+<body>
+  <h1>Operaciones del Sistema</h1>
+  <a href="/">Regresar</a>
+  <hr>
+  <form method="post">
+    {% csrf_token %}
+    <button name="accion" value="reiniciar">Reiniciar base de datos</button>
+    <button name="accion" value="consultar">Verificar base de datos</button>
+  </form>
+  {% if msg %}
+  <p><strong>Resultado:</strong> {{ msg }}</p>
+  {% endif %}
+</body>
+</html>

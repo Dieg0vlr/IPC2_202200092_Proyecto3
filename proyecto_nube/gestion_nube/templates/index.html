@@ -1,33 +1,22 @@
 <!doctype html>
-<html>
-<head><meta charset="utf-8"><title>Proyecto Nube</title></head>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Proyecto Nube</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; text-align: center; margin: 0; }
+    h1 { color: #0a2a66; margin-top: 30px; }
+    nav a { color: #0a53be; text-decoration: none; margin: 0 10px; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    hr { margin: 20px 0; }
+    footer { margin-top: 40px; font-size: 14px; color: #555; }
+  </style>
+</head>
 <body>
   <h1>Proyecto Nube</h1>
   <nav>
     <a href="/">Menu</a> |
-    <<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Proyecto Nube</title>
-</head>
-<body>
-    <h1>Proyecto Nube</h1>
-    <nav>
-        <a href="/">Menu</a> |
-        <a href="/config/">Enviar configuracion</a> |
-        <a href="/consumo/">Enviar consumo</a> |
-        <a href="/operaciones/">Operaciones</a> |
-        <a href="/facturar/">Facturar</a> |
-        <a href="/reportes/">Reportes</a> |
-        <a href="/ayuda/">Ayuda</a>
-    </nav>
-    <hr>
-    {% if msg %}<p>{{ msg }}</p>{% endif %}
-    {% if data %}<pre>{{ data|safe }}</pre>{% endif %}
-</body>
-</html>
-a href="/config/">Enviar configuracion</a> |
+    <a href="/config/">Enviar configuración</a> |
     <a href="/consumo/">Enviar consumo</a> |
     <a href="/operaciones/">Operaciones</a> |
     <a href="/facturar/">Facturar</a> |
@@ -37,5 +26,6 @@ a href="/config/">Enviar configuracion</a> |
   <hr>
   {% if msg %}<p>{{ msg }}</p>{% endif %}
   {% if data %}<pre>{{ data|safe }}</pre>{% endif %}
+  <footer>2025 — Proyecto 3 IPC2 — Universidad de San Carlos de Guatemala</footer>
 </body>
 </html>

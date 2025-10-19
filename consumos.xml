@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<listadoConsumos>
+  <consumo nitCliente="110339001-K" idInstancia="1">
+    <tiempo>2.5</tiempo>
+    <fechaHora>05/10/2025 13:45</fechaHora>
+  </consumo>
+  <consumo nitCliente="110339001-K" idInstancia="1">
+    <tiempo>3.0</tiempo>
+    <fechaHora>05/10/2025 14:00</fechaHora>
+  </consumo>
+</listadoConsumos>

@@ -27,7 +27,10 @@ urlpatterns = [
     path('facturar/', views.facturar, name='facturar'),
     path('reportes/', views.reportes, name='reportes'),
     path('ayuda/', views.ayuda, name='ayuda'),
-    path('config/', views.enviar_config, name='enviar_config'),
+    path('reporte/factura/<int:id_factura>/', views.generar_reporte_factura, name='reporte_factura'),
+    path('ayuda/', views.ayuda, name='ayuda'),
+    path('reporte/factura/<int:id_factura>/ver', views.ver_pdf, name='ver_pdf'),
+
 
 ]
 

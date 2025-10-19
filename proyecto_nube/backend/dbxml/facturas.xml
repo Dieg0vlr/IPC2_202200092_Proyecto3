@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<facturas>
+  <factura id="1" nitCliente="110339001-K" fecha="18/10/2025">
+    <detalle>
+      <item instancia="1" horas="2.5" precioHora="2.40" subtotal="6.00"/>
+    </detalle>
+    <total>6.00</total>
+  </factura>
+</facturas>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<archivoConfiguraciones>
+  <listaRecursos>
+    <recurso id="1">
+      <nombre>CPU</nombre>
+      <abreviatura>vCPU</abreviatura>
+      <metrica>unidades</metrica>
+      <tipo>Hardware</tipo>
+      <valorXhora>1.20</valorXhora>
+    </recurso>
+  </listaRecursos>
+  <listaCategorias>
+    <categoria id="1">
+      <nombre>Categoria A</nombre>
+      <descripcion>Descripción de categoria A</descripcion>
+      <cargaTrabajo>Trabajo de prueba</cargaTrabajo>
+      <listaConfiguraciones>
+        <configuracion id="1">
+          <nombre>Config A</nombre>
+          <descripcion>Configuración A</descripcion>
+          <recursosConfiguracion>
+            <recurso id="1">2</recurso>
+          </recursosConfiguracion>
+        </configuracion>
+      </listaConfiguraciones>
+    </categoria>
+  </listaCategorias>
+  <listaClientes>
+    <cliente nit="110339001-K">
+      <nombre>Juan Pérez</nombre>
+      <usuario>juanp</usuario>
+      <clave>clave123</clave>
+      <direccion>Calle Falsa 123</direccion>
+      <correoElectronico>juanp@example.com</correoElectronico>
+      <listaInstancias>
+        <instancia id="1">
+          <idConfiguracion>1</idConfiguracion>
+          <nombre>Instancia 1</nombre>
+          <fechaInicio>01/01/2025</fechaInicio>
+          <estado>Vigente</estado>
+          <fechaFinal></fechaFinal>
+        </instancia>
+      </listaInstancias>
+    </cliente>
+  </listaClientes>
+</archivoConfiguraciones>

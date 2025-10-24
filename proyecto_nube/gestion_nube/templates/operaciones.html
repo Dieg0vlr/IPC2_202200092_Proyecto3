@@ -1,17 +1,38 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="utf-8"><title>Operaciones</title></head>
+<head>
+  <meta charset="utf-8">
+  <title>Operaciones</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; text-align: center; margin: 0; }
+    h1 { color: #0a2a66; margin-top: 30px; }
+    nav a { color: #0a53be; text-decoration: none; margin: 0 10px; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    hr { margin: 20px 0; }
+    form { margin-top: 20px; }
+    button { background-color: #0a53be; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; margin: 5px; }
+    button:hover { background-color: #073d8d; }
+    footer { margin-top: 40px; font-size: 14px; color: #555; }
+  </style>
+</head>
 <body>
-  <h1>Operaciones del Sistema</h1>
-  <a href="/">Regresar</a>
+  <h1>Operaciones</h1>
+  <nav>
+    <a href="/">Menu</a> |
+    <a href="/config/">Enviar configuración</a> |
+    <a href="/consumo/">Enviar consumo</a> |
+    <a href="/operaciones/">Operaciones</a> |
+    <a href="/facturar/">Facturar</a> |
+    <a href="/reportes/">Reportes</a> |
+    <a href="/ayuda/">Ayuda</a>
+  </nav>
   <hr>
   <form method="post">
     {% csrf_token %}
-    <button name="accion" value="reiniciar">Reiniciar base de datos</button>
-    <button name="accion" value="consultar">Verificar base de datos</button>
+    <button type="submit" name="accion" value="reiniciar">Reiniciar base</button>
+    <button type="submit" name="accion" value="consultar">Consultar estado</button>
   </form>
-  {% if msg %}
-  <p><strong>Resultado:</strong> {{ msg }}</p>
-  {% endif %}
+  {% if msg %}<p><strong>{{ msg }}</strong></p>{% endif %}
+  <footer>2025 — Proyecto 3 IPC2 — Universidad de San Carlos de Guatemala</footer>
 </body>
 </html>

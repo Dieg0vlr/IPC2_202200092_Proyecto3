@@ -3,29 +3,93 @@
 <head>
   <meta charset="utf-8">
   <title>Ayuda - Proyecto Nube</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      color: #0a2a66;
+      margin-top: 25px;
+    }
+    nav a {
+      color: #0a53be;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    hr {
+      margin: 20px 0;
+    }
+    section {
+      background: white;
+      display: inline-block;
+      padding: 20px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      text-align: left;
+      max-width: 700px;
+    }
+    h2 {
+      color: #0a2a66;
+      border-bottom: 1px solid #0a53be;
+      padding-bottom: 5px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
-  <h1>Sección de Ayuda</h1>
-  <a href="/">Regresar al menú principal</a>
+
+  <h1>Proyecto Nube</h1>
+  <nav>
+    <a href="/">Menu</a> |
+    <a href="/config/">Enviar configuracion</a> |
+    <a href="/consumo/">Enviar consumo</a> |
+    <a href="/operaciones/">Operaciones</a> |
+    <a href="/facturar/">Facturar</a> |
+    <a href="/reportes/">Reportes</a> |
+    <a href="/ayuda/">Ayuda</a>
+  </nav>
   <hr>
 
-  <h2>Información del Proyecto</h2>
-  <ul>
-    <li><strong>Autor:</strong> {{ info.autor }}</li>
-    <li><strong>Carnet:</strong> {{ info.carnet }}</li>
-    <li><strong>Curso:</strong> {{ info.curso }}</li>
-    <li><strong>Proyecto:</strong> {{ info.proyecto }}</li>
-  </ul>
+  <section>
+    <h2>Ayuda del sistema</h2>
 
-  <h3>Descripción</h3>
-  <p>{{ info.descripcion }}</p>
+    <p><b>Autor:</b> Diego Maldonado</p>
+    <p><b>Carnet:</b> 202200092</p>
+    <p><b>Curso:</b> Introduccion a la Programacion y Computacion 2</p>
+    <p><b>Proyecto:</b> Sistema de Gestion en la Nube</p>
 
-  <h3>Guía rápida</h3>
-  <ol>
-    <li>Usa “Enviar configuración” para cargar el archivo <code>config.xml</code>.</li>
-    <li>Usa “Enviar consumo” para cargar <code>consumo.xml</code>.</li>
-    <li>Presiona “Facturar” para generar <code>facturas.xml</code> y su PDF.</li>
-    <li>Consulta reportes por categorías, configuraciones o recursos.</li>
-  </ol>
+    <h3>Descripcion</h3>
+    <p>
+      Este sistema permite administrar recursos, clientes e instancias en la nube. 
+      Carga archivos XML con datos de configuracion y consumo, genera facturas 
+      y reportes en formato PDF, y analiza ventas por categoria, configuracion o recurso.
+    </p>
+
+    <h3>Guia rapida</h3>
+    <ul>
+      <li>1. Usa "Enviar configuracion" para cargar configuracion.xml</li>
+      <li>2. Usa "Enviar consumo" para cargar consumos.xml</li>
+      <li>3. Presiona "Facturar" para generar facturas y PDF</li>
+      <li>4. Consulta los reportes generados por categoria o recurso</li>
+    </ul>
+  </section>
+
+  <footer>
+    2025 - Proyecto 3 IPC2 - Universidad de San Carlos de Guatemala
+  </footer>
 </body>
 </html>

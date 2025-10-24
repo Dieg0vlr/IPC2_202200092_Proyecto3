@@ -140,7 +140,7 @@ class Cliente:
             sub.appendChild(doc.createTextNode(str(valor)))
             nodo.appendChild(sub)
 
-        # contenedor canonico
+        # contenedor 
         lista_instancias = doc.createElement("instancias")
         for inst in self.instancias:
             lista_instancias.appendChild(inst.a_xml(doc))

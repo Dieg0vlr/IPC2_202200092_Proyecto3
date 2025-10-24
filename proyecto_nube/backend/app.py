@@ -96,7 +96,6 @@ def cargar_config():
         # --- RECURSOS ---
         recursos_base = obtener_o_crear_lista("recursos")
 
-        # solo recursos que esten dentro de <listaRecursos>
         recursos_padre = nuevo_doc.getElementsByTagName("listaRecursos")
         nuevos_recursos = []
         if recursos_padre:
@@ -389,7 +388,7 @@ def generar_reporte_factura(id_factura):
         datos_doc = minidom.parse(RUTA_DB_DATOS)
         raiz_datos = datos_doc.documentElement
 
-        # --- Mapa id_recurso → info completa (lectura robusta) ---
+        # --- Mapa id_recurso -> info completa  ---
         mapa_recursos = {}
         nodos_recursos = raiz_datos.getElementsByTagName("recurso")
         for rr in nodos_recursos:
@@ -416,7 +415,7 @@ def generar_reporte_factura(id_factura):
                 "valor": float(valor)
             }
 
-        # --- Mapa configuración → lista de recursos (id, cantidad) ---
+        # --- Mapa configuracion -> lista de recursos id, cantidad
         mapa_config = {}
         for cats in raiz_datos.getElementsByTagName("categorias"):
             for cat in cats.getElementsByTagName("categoria"):
@@ -431,7 +430,7 @@ def generar_reporte_factura(id_factura):
                                 lista.append((rc.getAttribute("id"), float(rc.firstChild.nodeValue.strip())))
                         mapa_config[id_conf] = lista
 
-        # --- Mapa instancia → id_configuración ---
+        # --- Mapa instancia → id_configuracion ---
         mapa_inst_conf = {}
         for cli in raiz_datos.getElementsByTagName("cliente"):
             for inst_cont in cli.getElementsByTagName("instancias") + cli.getElementsByTagName("listaInstancias"):
@@ -485,20 +484,20 @@ def generar_reporte_factura(id_factura):
             recursos_conf = mapa_config.get(id_conf, [])
 
             for rid, cant in recursos_conf:
-                rec = mapa_recursos.get(rid)
-                if rec:
-                    nombre_rec = rec["nombre"]
-                    metrica = rec["metrica"]
-                    valor = rec["valor"]
-                else:
-                    nombre_rec = "Desconocido"
-                    metrica = ""
-                    valor = 0.0
+                rec = mapa_recursos.get(rid, {"valor": 0, "nombre": "", "metrica": ""})
+                nombre_rec = rec["nombre"].strip() if rec["nombre"] else f"Recurso {rid}"
+                metrica = rec["metrica"] if rec["metrica"] else ""
+                valor = rec["valor"]
 
-                aporte_total = cant * valor * horas
-                c.drawString(3.5 * cm, y, f"- {nombre_rec} ({metrica}): {cant} × {valor:.2f} × {horas:.2f}h = {aporte_total:.2f}")
+                valor_real = rec["valor"] if rec["valor"] > 0 else 1.2  
+                aporte_total = cant * valor_real * horas
+                c.drawString(
+                    3.5 * cm, y,
+                    f"- {nombre_rec} ({metrica}): {cant} × {valor_real:.2f} × {horas:.2f}h = {aporte_total:.2f}"
+                )
+
                 y -= 0.4 * cm
-
+                
             y -= 0.2 * cm
 
         c.line(2 * cm, y - 0.2 * cm, 19 * cm, y - 0.2 * cm)

@@ -388,32 +388,38 @@ def generar_reporte_factura(id_factura):
         datos_doc = minidom.parse(RUTA_DB_DATOS)
         raiz_datos = datos_doc.documentElement
 
-        # --- Mapa id_recurso -> info completa  ---
+        # --- Mapa id_recurso -> info completa del bloque recursos
         mapa_recursos = {}
-        nodos_recursos = raiz_datos.getElementsByTagName("recurso")
-        for rr in nodos_recursos:
-            idr = rr.getAttribute("id")
-            if not idr:
-                continue  # Omitir si no tiene ID
 
-            def get_text(tag):
-                elems = rr.getElementsByTagName(tag)
-                if elems and elems[0].firstChild:
-                    return elems[0].firstChild.nodeValue.strip()
-                return ""
+        # Busca solo los recursos dentro de <recursos> y no los que estan en configuraciones
+        recursos_raiz = raiz_datos.getElementsByTagName("recursos")
+        if recursos_raiz:
+            for rr in recursos_raiz[0].getElementsByTagName("recurso"):
+                idr = rr.getAttribute("id")
+                if not idr:
+                    continue 
 
-            nombre = get_text("nombre")
-            metrica = get_text("metrica")
-            valor = get_text("valorXhora")
+                # Extrae los textos de los nodos internos
+                def get_text(tag):
+                    elems = rr.getElementsByTagName(tag)
+                    return elems[0].firstChild.nodeValue.strip() if elems and elems[0].firstChild else ""
 
-            if valor == "":
-                valor = "0"
+                nombre = get_text("nombre")
+                metrica = get_text("metrica")
+                valor_txt = get_text("valorXhora")
 
-            mapa_recursos[idr] = {
-                "nombre": nombre,
-                "metrica": metrica,
-                "valor": float(valor)
-            }
+                try:
+                    valor = float(valor_txt) if valor_txt != "" else 0.0
+                except:
+                    valor = 0.0
+
+                # Guarda la informacion
+                mapa_recursos[idr] = {
+                    "nombre": nombre,
+                    "metrica": metrica,
+                    "valor": valor
+                }
+
 
         # --- Mapa configuracion -> lista de recursos id, cantidad
         mapa_config = {}
@@ -487,13 +493,12 @@ def generar_reporte_factura(id_factura):
                 rec = mapa_recursos.get(rid, {"valor": 0, "nombre": "", "metrica": ""})
                 nombre_rec = rec["nombre"].strip() if rec["nombre"] else f"Recurso {rid}"
                 metrica = rec["metrica"] if rec["metrica"] else ""
-                valor = rec["valor"]
+                valor = float(rec["valor"]) if rec["valor"] else 0.0
 
-                valor_real = rec["valor"] if rec["valor"] > 0 else 1.2  
-                aporte_total = cant * valor_real * horas
+                aporte_total = cant * valor * horas
                 c.drawString(
                     3.5 * cm, y,
-                    f"- {nombre_rec} ({metrica}): {cant} × {valor_real:.2f} × {horas:.2f}h = {aporte_total:.2f}"
+                    f"- {nombre_rec} ({metrica}): {cant} × {valor:.2f} × {horas:.2f}h = {aporte_total:.2f}"
                 )
 
                 y -= 0.4 * cm
